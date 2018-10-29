@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% if username %}
+    <h3>用户: {{ username }}</h3>
+{% else %}
+    <h3>未登录,请先<a href="{% url 'app:login' %}">登录</a></h3>
+{% endif %}
+
+<h1>这是第五天的首页,当前cookie：{{ username }}</h1>
+<p>
+    <a href="{% url 'app:datail' 1 2 3 %}">测试</a>
+</p>
+<p>
+    <a href="{% url 'app:register' %}">注册</a>
+</p>
+<p>
+    <a href="{% url 'app:login' %}">登录</a>
+</p>
+
+<p>
+    <a href="{% url 'app:cart' %}">查看购物车</a>
+</p>
+<p>
+ <a href="{% url 'app:showcookie' %}">查看cookie</a>
+
+</p>
+<p>
+    <a href="{% url 'app:logout' %}">退出登录</a>
+</p>
+<p>
+    <a href="{% url 'app:jisuanqi' %}">计算器</ahr>
+
+</p>
+</body>
+</html>

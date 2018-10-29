@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+</head>
+<body>
+{% include 'header.html' %}
+
+
+<h1> 1、变量 </h1>
+<p>
+    用户名: {{ name }}
+</p>
+<p>
+    年龄: {{ haha }}
+</p>
+
+<h2> 2、标签 if </h2>
+{% if haha >= 18 %}
+    <p> 已年满18!!!! </p>
+{% endif %}
+
+
+{% if haha >= 18 %}
+    <p> 网吧，欢迎你! </p>
+{% else %}
+    <p> 你还未成年! </p>
+{% endif %}
+
+
+{% if name == 'root' %}
+    <p style="color: red"> 超级管理员! </p>
+{% elif name %}
+    <p> 用户: {{ name }} </p>
+{% else %}
+    <p> 你还未登录! </p>
+{% endif %}
+
+
+<h2> 3、标签 for </h2>
+{% for item in names %}
+    <p> {{ forloop.counter }} {{ item }} </p>
+{% endfor %}
+
+{% for student in studenttest %}
+    <p> {{ student }} </p>
+{% empty %}
+    <p> 学生列表参数还没传递过来！！！ </p>
+{% endfor %}
+
+
+{% for name in names %}
+    {% if forloop.first %}
+        <p style="color: blue"> 你的名字: {{ name }} </p>
+    {% elif forloop.last %}
+        <p style="color: red"> 我的名字: {{ name }} </p>
+    {% else %}
+        <p> {{ name }} </p>
+    {% endif %}
+{% endfor %}
+
+
+<h2> 4、标签 ifnotequal </h2>
+{% ifnotequal 'hello' 'world' %}
+    <p> 'hello' 和 'world' 确实不相等 </p>
+{% endifnotequal %}
+
+
+<h2> 5、过滤器 </h2>
+<p>
+    <p> {{ name | lower  }} </p>
+    <p> {{ name | upper }} </p>
+    <p> {{ hehe | default:'游客' }} </p>
+    <p> {{ name | join:'#' }} </p>
+</p>
+
+<h2> 6、标签include </h2>
+{% include 'goods-item.html' with goods=goods %}
+
+
+<hr>
+<h1>反向解析</h1>
+{#<p>#}
+{#    <a href="/mt/login/"> 测试1 </a>#}
+{#</p>#}
+{#<p>#}
+{#    <a href="/meituan/hehe/">测试2</a>#}
+{#</p>#}
+{#<p>#}
+{#    <a href="/meituan/lalala/"> 测试3 </a>#}
+{#</p>#}
+
+<!-- HTML注释 -->
+{# 模板注释 #}
+{#<p>{{ name }}</p>#}
+
+{% comment %}
+我是多行注释
+{% endcomment %}
+
+{# 截断 #}
+
+<p>
+
+<a href="{% url 'mt:test1' %}"> 测试 </a>
+</p>
+
+<p>
+    <a href="{% url 'mt:home' %}">首页</a>
+</p>
+
+<p>
+    <a href="{% url 'mt:cart' %}">购物车</a>
+</p>
+
+<p>
+    <a href="{% url 'mt:about' %}">关于我们</a>
+</p>
+
+<p>
+    <a href="{% url 'mt:login' %}"> 登录 </a>
+</p>
+<p>
+    <a href="{% url 'mt:verifycode' %}">验证码</a>
+</p>
+
+
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+ 
+<style type="text/css">
+*{
+margin:0px;
+padding:0px;
+}
+input{
+margin-top:2px;
+margin-left:2px;
+width:230px;
+height:30px;
+text-align:right;
+}
+button{
+margin-top:2px;
+margin-left:2px;
+width:50px;
+height:50px;
+}
+#container{
+	border: 0;
+	margin: 0 auto;
+margin-left:1px;
+border:1px solid #E4E4E4;
+background:#BBBBBB;
+width:235px;
+height:215px;
+
+}
+</style>
+ 
+<script>
+//使id=input的input控件获得焦点 
+function onLoad(){
+	//加载完毕后光标自动对应到输入框
+	var arr=document.getElementById("input");
+	focus();
+
+}
+//读取按钮的值，传给输入框
+function inputEvent(e){
+//获得每个e所代表的对象的innerHTML与id=input的控件的value值连接起来成新的value
+var val=e.innerHTML;
+var xsval=document.getElementById("input");
+//标签里的value连接每个事件的innerHTML值
+xsval.value+=val;
+}
+ 
+//计算出结果
+function inputOper(){
+//运用eval函数
+var xsval =document.getElementById("input");
+xsval.value=eval(xsval.value);
+}
+//清零
+function clearNum(){
+//设置id=input控件的value为空，并重新获得焦点
+var xsval=document.getElementById("input");
+xsval.value="";
+document.getElementById("input");
+focus();
+}
+//退格
+function backNum(){
+// 运用substring函数
+var arr=document.getElementById("input");
+arr.value=arr.value.substring(0,arr.value.length-1);
+}
+</script>
+</head>
+ 
+<body onload="onload()">
+<input id="input" type="text">
+<div id="container">
+<div>
+<button onclick="inputEvent(this)">1</button>
+<button onclick="inputEvent(this)">2</button>
+<button onclick="inputEvent(this)">3</button>
+<button onclick="inputEvent(this)">+</button>
+ 
+</div>
+<div>
+<button onclick="inputEvent(this)">4</button>
+<button onclick="inputEvent(this)">5</button>
+<button onclick="inputEvent(this)">6</button>
+<button onclick="inputEvent(this)">-</button>
+
+</div>
+ 
+<div>
+<button onclick="inputEvent(this)">7</button>
+<button onclick="inputEvent(this)">8</button>
+<button onclick="inputEvent(this)">9</button>
+<button onclick="inputEvent(this)">*</button>
+</div>
+ 
+<div>
+<button onclick="inputEvent(this)">0</button>
+<button onclick="inputEvent(this)">.</button>
+<button onclick="inputOper(this)">=</button>
+<button onclick="inputEvent(this)">/</button>
+</div>
+</div>
+<button onclick="clearNum()">清零</button>
+<button onclick="backNum()">退格</button>
+</body>
+ 
+</html>

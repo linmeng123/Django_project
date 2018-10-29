@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+{#    挖坑#}
+    <title>
+        {% block title %}
+        {% endblock %}
+    </title>
+    <style>
+        .header, .footer{
+            height: 44px;
+            background: red;
+            color: white;
+            line-height: 44px;
+            text-align: center;
+            font-size: 25px;
+        }
+    </style>
+</head>
+<body>
+
+{% block header %}
+    <div class="header">
+        头部导航栏
+    </div>
+{% endblock %}
+
+{% block test1 %}
+    我是头部内容
+{% endblock %}
+
+
+<div class="footer">
+    底部通栏
+</div>
+
+</body>
+</html>
